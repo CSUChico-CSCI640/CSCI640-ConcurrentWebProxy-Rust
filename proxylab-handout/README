@@ -1,12 +1,11 @@
 ****************
-CS:APP Proxy Lab
+Proxy Lab
 ****************
 
-Makefile	- For building and handing in proxy
+Cargo.toml	- Rust Cargo File
 README		- This file
 
 # Proxy source files
-proxy.{c,h}	- Primary proxy code
-csapp.{c,h}	- Wrapper and helper functions from the CS:APP text
+main.rs - Rust source code file
 
 
