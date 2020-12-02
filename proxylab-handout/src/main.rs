@@ -10,7 +10,13 @@ struct UriParts {
 
 fn parse_uri(request: String) -> UriParts {
     let parts: Vec<&str> = request.split(' ').collect();
+    if parts.len() < 3 {
+        panic!("Request has too few parts");
+    }
     let uri_parts: Vec<&str> = parts[1].splitn(4, '/').collect();
+    if uri_parts.len() < 3 {
+        panic!("Not enough URI Parts");
+    }
     
     let mut pathname: String = "".to_string();
     if uri_parts.len() > 3 {
@@ -20,6 +26,9 @@ fn parse_uri(request: String) -> UriParts {
     let mut hostname = uri_parts[2];
     if uri_parts[2].contains(":"){
         let host_parts: Vec<&str> = uri_parts[2].split(":").collect();
+        if host_parts.len() <= 0 {
+            panic!("Something went wrong with finding port");
+        }
         hostname = host_parts[0];
         port = host_parts[1].parse::<u16>().unwrap();
     }
